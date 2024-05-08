@@ -3,7 +3,11 @@ import CIcon from '@coreui/icons-react'
 import {
   cilDescription,
   cilSpeedometer,
-  cilFastfood
+  cilFastfood,
+  cilEco,
+  cilTerrain,
+  cilCog,
+  cilPeople
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -20,14 +24,43 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: 'Restaurants',
-    to:'/restaurants',
-    icon: <CIcon icon={cilFastfood} customClassName="nav-icon" />,
+    name: 'Batchs',
+    to:'/batchs',
+    icon: <CIcon icon={cilTerrain} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'Restaurant',
-        to:'/restaurants/restaurant'
+        name: 'Batch',
+        to:'/batchs/batch'
+      },
+      {
+        component: CNavItem,
+        name: 'Spents',
+        to:'/batchs/spents'
+      }
+    ]
+  },
+  {
+    component: CNavGroup,
+    name: 'Contractors',
+    to:'/contractors',
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />
+  },
+  {
+    component: CNavGroup,
+    name: 'Machineries',
+    to:'/machineries',
+    icon: <CIcon icon={cilCog} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Machinery',
+        to:'/machineries/machinery'
+      },
+      {
+        component: CNavItem,
+        name: 'Movements',
+        to:'/machineries/movements'
       }
     ]
   },
