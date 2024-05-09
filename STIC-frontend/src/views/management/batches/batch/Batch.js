@@ -18,21 +18,21 @@ const Batch=()=>{
     const[batchData, setBatchData]=useState([]);
     const navigate=useNavigate();
     useEffect(()=>{
-        const getBatchs=async()=>{
+        const getBatches=async()=>{
             const response=await Axios({
-                url:''
+                url:'http://localhost:1337/api/listbatches'
             });
-            const listBatchs=Object.keys(response.data).map(i=>response.data[i]);
-            setBatchData(listBatchs.flat());
+            const listBatches=Object.keys(response.data).map(i=>response.data[i]);
+            setBatchData(listBatches.flat());
         }
-        getBatchs();
+        getBatches();
     },[]);
     function handleCreateBatch(event){
-        navigate('/batchs/batchform');
+        navigate('/batches/batchform');
     }
     const handleDisableBatch= async(batchId)=>{
         try{
-            var url=""+batchId;
+            var url="http://localhost:1337/api/disablebatch"+batchId;
             const response= await Axios.put(url);
             window.location.reload();
         }
@@ -41,7 +41,7 @@ const Batch=()=>{
         }
     }
     function handleEdit(batchId){
-
+        navigate(`/batches/batcheditform/${batchId}`);
     }
     const columns=[
         {
@@ -83,8 +83,8 @@ const Batch=()=>{
                         <CTableDataCell key={columnIndex}>
                             {column.dataIndex==='Options'?(
                                 <>
-                                    <CButton onClick={handleEdit}color="primary">Edit</CButton>
-                                    <CButton onClick={handleDisable} color="danger" style={{ color: 'white' }}>Delete</CButton>
+                                    <CButton onClick={()=>handleEdit(batch.batchId)} color="primary">Edit</CButton>
+                                    <CButton onClick={()=>handleDisableBatch(batch.batchId)} color="danger" style={{ color: 'white' }}>Delete</CButton>
                                 </>
                             ):(
                                  batch[column.dataIndex]

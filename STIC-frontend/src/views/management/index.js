@@ -1,7 +1,8 @@
-import Batch from "./batchs/batch/Batch";
-import BatchForm from "./batchs/batch/BatchForm";
-
+import Batch from "./batches/batch/Batch";
+import BatchForm from "./batches/batch/BatchForm";
+import BatchEditForm from "./batches/batch/BatchEditForm";
 export{
     Batch,
-    BatchForm
+    BatchForm,
+    BatchEditForm
 }
