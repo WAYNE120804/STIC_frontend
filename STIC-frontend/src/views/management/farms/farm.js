@@ -27,9 +27,17 @@ const Farm = () => {
 
     getFarms()
   }, [])
-
-  const handleCreateFarm = () => {
+  function handleCreateFarm(event) {
     navigate('/farms/farmform')
+  }
+  const handleDisableFarm = async (farmId) => {
+    try {
+      var url = 'http://localhost:1337/api/disablefarm/' + farmId
+      const response = await Axios.put(url)
+      window.location.reload()
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const handleEdit = (farmId) => {
